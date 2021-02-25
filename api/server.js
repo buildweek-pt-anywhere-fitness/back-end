@@ -11,8 +11,8 @@ server.use(express.json())
 
 server.use('/api/classes', classesRouter);
 
-// server.use('/', (req, res) => {
-//     res.json({ message: "Welcome to the Anywhere Fitness API" })
-// });
+server.use('/', (req, res) => {
+    res.json({ message: "Welcome to the Anywhere Fitness API" })
+});
 
 module.exports = server;
