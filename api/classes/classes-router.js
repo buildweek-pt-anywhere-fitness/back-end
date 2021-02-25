@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         res.json(classes);
     })
     .catch(err => {
-        res.status(500).json({ message: 'Failed to get classes'})
+        res.status(500).json({ message: 'Failed to get classes', err})
     })
 });
 
