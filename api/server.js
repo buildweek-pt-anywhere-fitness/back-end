@@ -11,5 +11,4 @@ server.use(express.json())
 
 server.use('/api/classes', classesRouter);
 
-
 module.exports = server;
