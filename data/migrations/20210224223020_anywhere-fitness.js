@@ -12,28 +12,23 @@ exports.up = async function(knex) {
       tbl.integer('registered')
       tbl.integer('max_class_size')
   })
-  // await knex.schema.createTable('roles', (table) => {
-  //   table.increments('id')
-  //   table.text('name').notNullable().unique()
 
-  // })
-  // await knex.schema.createTable('users', (table) => {
-  //   table.increments('id')
-  //   table.text('username').notNullable().unique()
-  //   table.text('password').notNullable()
-  //   table.integer('auth_code')
-  //       .notNullable()
-  //       .defaultTo(1)
-  //       .references('id')
-  //       .inTable('roles')
-  //       .onDelete('RESTRICT')
-  //       .onUpdate('CASCADE')
-        
-  // })
+  await knex.schema.createTable('roles', (table) => {
+    table.increments('id')
+    table.text('name').notNullable()
+    table.text('auth_code').defaultTo("0")
+  })
+
+  await knex.schema.createTable('users', (table) => {
+    table.increments('id')
+    table.text('username').notNullable().unique()
+    table.text('password').notNullable()
+    table.text('auth_code').defaultTo("0")
+  })
 };
 
 exports.down = async function(knex) {
     await knex.schema.dropTableIfExists('classes')
-    // await knex.schema.dropTableIfExists('roles')
-    // await knex.schema.dropTableIfExists('users')
+    await knex.schema.dropTableIfExists('roles')
+    await knex.schema.dropTableIfExists('users')
 };
