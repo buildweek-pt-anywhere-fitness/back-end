@@ -2,6 +2,7 @@
 
 https://api-anywhere-fitness.herokuapp.com
 
+#### Classes Endpoints
 | Method | Endpoint            | Description                |
 | ------ | ------------------- | -------------------------- |
 | GET    | /api/classes        | Returns a list of classes  |
@@ -23,6 +24,8 @@ https://api-anywhere-fitness.herokuapp.com
 | location        | string            | required                                            |
 | registered      | integer           | number of people registered                         |
 | max_class_size  | integer           | number of people that can register                  |
+
+#### Users Endpoints
 
 | Method | Endpoint            | Description                                                                                       |
 | ------ | ------------------- | ------------------------------------------------------------------------------------------------- |
