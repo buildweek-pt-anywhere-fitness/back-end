@@ -1,5 +1,7 @@
 const express = require('express');
 
+const { restrict } = require('./classes-middleware')
+
 const Classes = require('./classes-model')
 
 const router = express.Router();
@@ -30,7 +32,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', restrict('instructor'), (req, res) => {
     const classData = req.body;
   
     Classes.add(classData)
@@ -42,7 +44,7 @@ router.post('/', (req, res) => {
       });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', restrict('instructor'),  (req, res) => {
     const { id } = req.params;
     const changes = req.body;
   
@@ -62,7 +64,7 @@ router.put('/:id', (req, res) => {
       });
   });
 
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', restrict('instructor'),  (req, res) => {
     const { id } = req.params;
   
     Classes.remove(id)
