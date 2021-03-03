@@ -21,13 +21,13 @@ https://api-anywhere-fitness.herokuapp.com
 
 
 #### Classes Endpoints
-| Method | Endpoint            | Description                |
-| ------ | ------------------- | -------------------------- |
-| GET    | /api/classes        | Returns a list of classes  |
-| GET    | /api/classes/:id    | Get class by id            |
-| POST   | /api/classes        | Add a class                |
-| PUT    | /api/classes/:id    | Update a class based on id |
-| DELETE | /api/classes/:id    | Delete a class based on id |
+| Method | Endpoint            | Description                                     |
+| ------ | ------------------- | ----------------------------------------------- |
+| GET    | /api/classes        | Returns a list of classes                       |
+| GET    | /api/classes/:id    | Get class by id                                 |
+| POST   | /api/classes        | Add a class (Instructor only)                   |
+| PUT    | /api/classes/:id    | Update a class based on id (Instructor only)    |
+| DELETE | /api/classes/:id    | Delete a class based on id (Instructor only)    |
 
 #### Classes Schema
 
