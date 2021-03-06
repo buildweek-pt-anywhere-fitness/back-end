@@ -32,6 +32,42 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/:id/users', (req, res) => {
+  const { id } = req.params;
+
+  Classes.findUsers(id)
+    .then(users => {
+      if (users.length) {
+        res.json(users);
+      } else {
+        res.status(404).json({ message: 'Could not find users for given class' })
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Failed to get users' });
+    });
+});
+
+// router.post('/:id/users', (req, res) => {
+//   const { id } = req.params;
+//   const data = {}
+
+//   Classes.findById(id)
+//     .then(classes => {
+//       if (classes) {
+//         return Users.addClass(id);
+//       } else {
+//         res.status(404).json({ message: 'Could not find class with given id.' })
+//       }
+//     })
+//     .then(step => {
+//       res.status(201).json(step);
+//     })
+//     .catch(err => {
+//       res.status(500).json({ message: 'Failed to create new class' });
+//     });
+// });
+
 router.post('/', restrict('instructor'), (req, res) => {
     const classData = req.body;
   
