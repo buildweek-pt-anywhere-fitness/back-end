@@ -26,22 +26,26 @@ router.post('/register', async (req, res, next) => {
         }
 
         if(auth_code === 'abc123') {
+            // checks if user inserts correct auth_code to be instructor.
             
             await Users.add({
                 username,
                 password: await bcrypt.hash(password, 14),
-                auth_code: auth_code
+                auth_code
             })
 
             return res.status(201).json({ message: 'Register Successful' })
 
         } else if (auth_code === undefined || auth_code === null) {
+            //checks if user put nothing for auth_code. if so, will be a client.
+
             await Users.add({
                 username,
                 password: await bcrypt.hash(password, 14),
                 auth_code: "0"
+                //set auth_code to "0" because SQLite doesnt do inner joins with 
+                //undefined values so thatI can relate this auth_code to the client role. 
             })
-
             return res.status(201).json({ message: 'Register Successful' })
 
         } else {
@@ -78,7 +82,8 @@ router.post('/login', async (req, res, next) => {
 
         res.cookie('token', token)
         res.json({
-            message: `Welcome, ${user.username}!`
+            message: `Welcome, ${user.username}!`,
+            token
         })
 
     } catch(err) {
