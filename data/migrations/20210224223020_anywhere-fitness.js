@@ -2,7 +2,7 @@
 exports.up = async function(knex) {
   await knex.schema
   .createTable('classes', tbl => {
-      tbl.increments('id')
+      tbl.increments()
       tbl.string('name', 128).notNullable()
       tbl.string('type', 128).notNullable()
       tbl.string('start_time', 128).notNullable()
@@ -14,16 +14,22 @@ exports.up = async function(knex) {
   })
 
   await knex.schema.createTable('roles', (table) => {
-    table.increments('id')
+    table.increments()
     table.text('name').notNullable()
     table.text('auth_code').defaultTo("0")
   })
 
   await knex.schema.createTable('users', (table) => {
-    table.increments('id')
+    table.increments()
     table.text('username').notNullable().unique()
     table.text('password').notNullable()
     table.text('auth_code').defaultTo("0")
+    table.text('class_id')
+      .unsigned()
+      .references('id')
+      .inTable('classes')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
   })
 };
 

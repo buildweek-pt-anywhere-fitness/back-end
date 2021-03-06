@@ -7,7 +7,8 @@ module.exports = {
     findById,
     update,
     remove,
-
+    findClients,
+    // addClient
 };
 
 function find() {
@@ -16,9 +17,6 @@ function find() {
 
 function add(classes) {
     return db('classes').insert(classes)
-    // .then(object => {
-    //     return findById(object[0]);
-    // })
 }
 
 function findById(id) {
@@ -26,6 +24,19 @@ function findById(id) {
     .where({id})
     .first();
 }
+
+function findClients(id) {
+    return db('classes')
+    .join('users', 'classes.id', 'users.class_id')
+    .select('classes.id', 'classes.name', 'users.username')
+    .where({ class_id: id})
+}
+
+// function addClient(data, id) {
+//     return db('users')
+//     .insert(data)
+//     .where('class_id', id)
+// }
 
 function update(changes, id) {
     return db('classes')
@@ -35,7 +46,6 @@ function update(changes, id) {
         return findById(id)
     });
 }
-
 
 function remove(id) {
     return db('classes')
