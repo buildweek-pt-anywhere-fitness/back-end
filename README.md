@@ -1,6 +1,11 @@
 # Anywhere Fitness Backend
 
-https://api-anywhere-fitness.herokuapp.com
+Project Description -
+
+The purpose of "Anywhere Fitness" is to make fitness possible anywhere! We wanted to connect clients with personal trainers and personal trainers with clients.
+
+The app will be able to allow instructors can take attendance, request and process payments, create virtual “punch passes” for each type of class offered, alert clients of cancellations or location changes and so much more. Clients can easily find out information on classes - location, class size, start time and duration, as well as reschedule or cancel an upcoming appointment or reservation right from the mobile app. We hope to make our services more dynamic and evolved as we grow!
+
 
 #### Users Endpoints
 
